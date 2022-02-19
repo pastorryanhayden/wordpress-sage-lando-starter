@@ -1,0 +1,20 @@
+name: wordpress
+recipe: wordpress
+config:
+  webroot: web
+  php: 7.4
+  via: nginx
+proxy:                
+  nginx:            
+    - bedrock.test
+  theme: 
+    - localhost:3000
+services:
+  theme:
+    type: node
+    services:
+      ports:
+        - 3000:3000
+tooling:
+  yarn:
+    service: theme
